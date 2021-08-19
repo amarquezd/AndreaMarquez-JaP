@@ -139,3 +139,11 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.general{
+  background-color:aliceblue;
+  background-position: center;
+  background-size: 60%;
+  justify-content: center;
+  text-align: center;
+}
