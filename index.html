@@ -40,14 +40,14 @@
   <div class="alignment">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h3 class="alert-heading">Para continuar, primero debes hacer log in!</h3>
-      <form>
+      <form action= "initpage.html">
         <h4>Ingresa tu usuario y clave</h4>
         <label for="correo">
           <input type="text" name="email" placeholder="Ingresa tu correo" required>
         </label> 
         <br>
         <label for="password">
-          <input type="text" name="password" placeholder="Ingresa tu contraseña" required >
+          <input type="password" name="password" placeholder="Ingresa tu contraseña" required>
         </label>
         <br>
         <label for="remember">
@@ -55,7 +55,7 @@
         </label> 
         <br>
         <hr>
-        <button onclick="()=>"> Entrar</button>
+        <button type="submit"> Entrar</button>
     </form>
       
     </div>
