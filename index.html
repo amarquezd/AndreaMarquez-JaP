@@ -25,7 +25,8 @@
       align-items: center;
       padding-top: 40px;
       padding-bottom: 40px;
-      }
+      background-color: #f5f5f5;
+    }
 
     .signin {
       width: 100%;
@@ -36,11 +37,11 @@
   </style>
 </head>
 
-<body class="general">
-  <div class="alignment">
+<body class="text-center">
+  <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h3 class="alert-heading">Para continuar, primero debes hacer log in!</h3>
-      <form action= "initpage.html">
+      <form action= "init-page.html">
         <h4>Ingresa tu usuario y clave</h4>
         <label for="correo">
           <input type="text" name="email" placeholder="Ingresa tu correo" required>
@@ -57,14 +58,10 @@
         <hr>
         <button type="submit"> Entrar</button>
     </form>
-      
     </div>
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
-
-
-
 </body>
 </html>
