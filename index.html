@@ -41,22 +41,24 @@
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
       <h3 class="alert-heading">Para continuar, primero debes hacer log in!</h3>
-      <form action= "init-page.html">
+      <form>
         <h4>Ingresa tu usuario y clave</h4>
+        <div>
         <label for="correo">
-          <input type="text" name="email" placeholder="Ingresa tu correo" required>
+          <input type="text" name="email" id="nombre" placeholder="Ingresa tu correo">
         </label> 
         <br>
         <label for="password">
-          <input type="password" name="password" placeholder="Ingresa tu contraseña" required>
+          <input type="password" name="password" id="clave" placeholder="Ingresa tu contraseña">
         </label>
         <br>
         <label for="remember">
           <input type="checkbox" name="recuerdame" value="Recordarme"> Recordarme
-        </label> 
+        </label>
+      </div> 
         <br>
         <hr>
-        <button type="submit"> Entrar</button>
+        <button type="button" onclick="guardaYVe()" id="boton"> Entrar</button>
     </form>
     </div>
   </div>

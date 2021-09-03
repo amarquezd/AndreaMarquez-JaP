@@ -147,3 +147,9 @@ a.custom-card:hover {
   justify-content: center;
   text-align: center;
 }
+
+.site-header h5 {
+  color: white;
+  transition: ease-in-out color .15s;
+  margin-top: 4px;
+}
