@@ -63,7 +63,7 @@ function showProductsList() {
                 </div>
             </a>
             `
-            }
+        }
 
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
@@ -104,27 +104,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
         sortAndShowProd(ORDER_BY_PROD_RELEV);
     });
 
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+    document.getElementById("rangeFilterCount").addEventListener("click", function () {
         precioMin = document.getElementById("precioMinimo").value;
         precioMax = document.getElementById("precioMaximo").value;
 
-        if((precioMin != undefined) && (precioMin != "") && (parseInt(precioMin)) >= 0){
+        if ((precioMin != undefined) && (precioMin != "") && (parseInt(precioMin)) >= 0) {
             precioMin = parseInt(precioMin);
         }
-        else{
+        else {
             precioMin = undefined;
         }
 
-        if((precioMax != undefined) && (precioMax != "") && (parseInt(precioMax)) >= 0){
+        if ((precioMax != undefined) && (precioMax != "") && (parseInt(precioMax)) >= 0) {
             precioMax = parseInt(precioMax);
         }
-        else{
+        else {
             precioMax = undefined;
         }
 
         showProductsList();
     })
-    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+    document.getElementById("clearRangeFilter").addEventListener("click", function () {
         precioMin = document.getElementById("precioMinimo").value;
         precioMax = document.getElementById("precioMaximo").value;
 
@@ -133,6 +133,58 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         showProductsList();
     })
+
+    const buscador = document.getElementById("filterDown");
+
+    function filtrar() {
+
+        fetch(PRODUCTS_URL)
+
+            .then(respuesta => respuesta.json())
+
+            .then(datos => {
+
+                const texto = buscador.value.toLowerCase();
+
+                let resultado = ""
+
+                for (let dato of datos) {
+
+                    const busqueda = dato.name.toLowerCase();
+
+                    if (busqueda.includes(texto) || busqueda === '') {
+                        
+                        resultado += `
+                <a href="category-info.html" class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="` + dato.imgSrc + `" alt="` + dato.name + `" class="img-thumbnail">
+                        </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">`+ dato.name + `</h4>
+                                <h3 class="text-muted">$` + dato.cost + `</h3>
+                            </div>
+                            <p class="mb-1">` + dato.description + `</p>
+                        </div>
+                    </div>
+                </a>
+                `
+                    }
+                }
+
+                document.getElementById("prod-list-container").innerHTML = resultado;
+
+            })
+
+    }
+
+    function filtro() {
+
+        buscador.addEventListener("keyup", filtrar);
+    }
+
+    filtro();
 });
 
 
