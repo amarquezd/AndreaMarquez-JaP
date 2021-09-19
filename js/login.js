@@ -13,7 +13,7 @@ function guardaYVe(){
     if(nombre === '' || clave === '' ) {
       alert('Debes ingresar los datos solicitados');
     }else{
-      window.location.href = 'file:///C:/Users/Andrea%20Marquez/Documents/GitHub/AndreaMarquez-JaP/init-page.html';
+      window.location.href = 'init-page.html';
     }
     localStorage.setItem('nombre', nombre);
   }

@@ -36,6 +36,11 @@ function sortProducts(criteria, array) {
     return result
 }
 
+function verProducto(id){
+    localStorage.setItem("producto", JSON.stringify({productoId: id}));
+    window.location = "product-info.html";    
+}
+
 function showProductsList() {
 
     let htmlContentToAppend = "";
@@ -48,7 +53,7 @@ function showProductsList() {
             ((precioMax == undefined) || (precioMax != undefined && parseInt(datos.cost) <= precioMax))) {
 
             htmlContentToAppend += `
-            <a href="category-info.html" class="list-group-item list-group-item-action">
+            <a href="javascript:verProducto(`+ datos.id +`)"  class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + datos.imgSrc + `" alt="` + datos.name + `" class="img-thumbnail">
@@ -56,15 +61,16 @@ function showProductsList() {
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">`+ datos.name + `</h4>
-                            <h3 class="text-muted">$` + datos.cost + `</h3>
+                            <h3 class="text-muted">`+ datos.currency + ` ` + datos.cost + `</h3>                        
                         </div>
-                        <p class="mb-1">` + datos.description + `</p>
-                    </div>
-                </div>
+                        <p class="mb-1">` + datos.description + `</p>                        
+                    </div>                   
+                </div>               
             </a>
+            
             `
         }
-
+        
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
 
@@ -155,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     if (busqueda.includes(texto) || busqueda === '') {
                         
                         resultado += `
-                <a href="category-info.html" class="list-group-item list-group-item-action">
+                <a href="product-info.html" class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-3">
                             <img src="` + dato.imgSrc + `" alt="` + dato.name + `" class="img-thumbnail">

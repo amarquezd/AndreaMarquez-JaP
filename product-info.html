@@ -13,6 +13,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -26,14 +27,40 @@
       <h5 id="logged-user"></h5>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container mt-5 p-4">
+    <h1 id="contenido"></h1>
+    <hr class="my-3">
+    <div id="imagenes"></div>
+    <h2 class="text-muted" id="costo"></h2>
+    <p id="descripcion"></p>
+    <p id="related"> Tambien te puede interesar: </p>
+
+    <div class="list-group-item">
+      <div class="justify-content-between">
+      <h4>Contanos tu opinión:</h4>
+      
+      </div>
+      <textarea id="newComment" name="newComment" cols="150" class="text-muted img-thumbnail justify-content-between">
+      Agrega aquí tu comentario
+      </textarea>
+      
+      <label for="puntuacion">Puntuación:</label>
+      <select name="puntuacion" id="puntos" class="text-muted img-thumbnail">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input type="submit" class="btn btn-secondary" value="Enviar">
+      <br>
+      <hr class="my-3">
+      <div id="commentSect"></div>
     </div>
   </div>
+
+
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
@@ -55,6 +82,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+
 </body>
 
 </html>
