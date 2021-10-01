@@ -13,7 +13,7 @@ function guardaYVe(){
     if(nombre === '' || clave === '' ) {
       alert('Debes ingresar los datos solicitados');
     }else{
-      window.location.href = 'init-page.html';
+      window.location = 'init-page.html';
     }
     localStorage.setItem('nombre', nombre);
   }

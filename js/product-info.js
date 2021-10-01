@@ -36,13 +36,20 @@ function mostrarImagenes(array) {
     for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
 
-        content += `
-          <img class="img-thumbnail justify-content-between" style="height: 130px" src="` + imageSrc + `" alt="">
-            
-        `
+        if (i === 0) {
+            content +=
+                `<div class="carousel-item img-thumbnail justify-content-between active">
+        <img src="` + imageSrc + `" class="d-block w-100" alt="">
+      </div>`}
+        else {
+            content += `
+      <div class="carousel-item img-thumbnail justify-content-between">
+        <img src="` + imageSrc + `" class="d-block w-100" alt="">
+      </div>`}
 
-        document.getElementById("imagenes").innerHTML = content;
     }
+
+    document.getElementById("imagenes").innerHTML = content;
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
