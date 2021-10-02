@@ -31,26 +31,6 @@ function mostrarImagenes(array) {
     document.getElementById("imagenes").innerHTML = content;
 }
 
-function mostrarRelacion(array1, array2) {
-
-    let relacionados = "";
-
-    array2.forEach(function (i) {
-
-        relacionados += `
-            <div class="card" style="width: 10rem; display: inline-block;">
-            <img src="${array1[i].imgSrc}" class="card-img-top" alt="">
-            <div class="card-body">
-              <h5 class="card-title">${array1[i].name}</h5>
-              <p class="card-text">${array1[i].cost}</p>
-              <a href="javascript:verProducto(${array1[i].id})" class="btn btn-secondary">VER</a>
-            </div>
-          </div>`
-
-    })
-    document.getElementById("related").innerHTML = relacionados;
-}
-
 function verProducto(id) {
     localStorage.setItem("producto", JSON.stringify({ productoId: id }));
     window.location = "product-info.html";
