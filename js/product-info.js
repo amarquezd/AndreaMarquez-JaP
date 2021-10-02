@@ -8,27 +8,6 @@ const CHEVROLET = "https://amarquezd.github.io/JaP-para-Jsons/CHEVROLET-INFO.jso
 const ALL_PRODS = "https://amarquezd.github.io/JaP-para-Jsons/all-prods.json"
 var comments = [];
 
-/*function mostrarProducto(product) {
-    var name = "";
-
-    name += `<h1> ${product.name} </h1>
-    <hr class="my-3">`
-    
-    document.getElementById("contenido").innerHTML = name;
-
-    let precio ='';
-    precio +=`<h2 class="text-muted">${product.currency} ${product.cost}</h2>`
-
-    document.getElementById("costo").innerHTML = precio;
-
-    let description = '';
-
-    description += `<p> ${product.description} </p> `;
-    document.getElementById("descripcion").innerHTML = description;
-}*/
-
-
-
 function mostrarImagenes(array) {
 
     let content = "";
@@ -52,6 +31,32 @@ function mostrarImagenes(array) {
     document.getElementById("imagenes").innerHTML = content;
 }
 
+function mostrarRelacion(array1, array2) {
+
+    let relacionados = "";
+
+    array2.forEach(function (i) {
+
+        relacionados += `
+            <div class="card" style="width: 10rem; display: inline-block;">
+            <img src="${array1[i].imgSrc}" class="card-img-top" alt="">
+            <div class="card-body">
+              <h5 class="card-title">${array1[i].name}</h5>
+              <p class="card-text">${array1[i].cost}</p>
+              <a href="javascript:verProducto(${array1[i].id})" class="btn btn-secondary">VER</a>
+            </div>
+          </div>`
+
+    })
+    document.getElementById("related").innerHTML = relacionados;
+}
+
+function verProducto(id) {
+    localStorage.setItem("producto", JSON.stringify({ productoId: id }));
+    window.location = "product-info.html";
+}
+
+
 document.addEventListener("DOMContentLoaded", function (e) {
 
     getJSONData(ALL_PRODS).then(function (result) {
@@ -65,33 +70,54 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     let productName = document.getElementById("contenido");
                     let productCost = document.getElementById("costo");
                     let productDescription = document.getElementById("descripcion");
-                    let productRelated = document.getElementById("related");
 
                     productName.innerHTML += product.name;
                     productCost.innerHTML += product.currency + ` ` + product.cost;
                     productDescription.innerHTML = product.description;
-                    productRelated.innerHTML += product.relatedProducts;
 
                     mostrarImagenes(product.images);
 
                 }
 
             });
+
         }
-    })
+
+        fetch(PRODUCTS_URL)
+            .then(respuesta => respuesta.json())
+            .then(datos => {
+
+                let relacionados = "";
+
+                for (let dato of datos) {
+
+                    relacionados += `
+                        <div class="card" style="width: 10rem; display: inline-block;">
+                        <img src="${dato.imgSrc}" class="card-img-top" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title">${dato.name}</h5>
+                          <p class="card-text">${dato.cost}</p>
+                          <a href="javascript:verProducto(${dato.id})" class="btn btn-secondary">VER</a>
+                        </div>
+                      </div>`
+
+                }
+                document.getElementById("related").innerHTML = relacionados;
+
+            })
 
 
-    fetch(PRODUCT_INFO_COMMENTS_URL)
+        fetch(PRODUCT_INFO_COMMENTS_URL)
 
-        .then(respuesta => respuesta.json())
+            .then(respuesta => respuesta.json())
 
-        .then(datos => {
+            .then(datos => {
 
-            let htmlContentToAppend = "";
+                let htmlContentToAppend = "";
 
-            for (let dato of datos) {
+                for (let dato of datos) {
 
-                htmlContentToAppend += `
+                    htmlContentToAppend += `
                          <div class="list-group-item justify-content-between">            
                             <div class="row">
                                 <div class="col-3">
@@ -108,7 +134,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
                          </div>                             
                         `}
 
-            document.getElementById("commentSect").innerHTML = htmlContentToAppend;
-        })
+                document.getElementById("commentSect").innerHTML = htmlContentToAppend;
+            })
 
-});
+    });
+})
