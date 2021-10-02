@@ -67,11 +67,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
         fetch(ALL_PRODS)
             .then(response => response.json())
             .then(data => {
-
+                let prodObjString = localStorage.getItem("producto");
+                let prodObject = JSON.parse(prodObjString);
                 let info = [];
-                for (let i = 0; i < data.length; i++) {
-                    info = data[i].relatedProducts;
-                }
+
+                info = data[prodObject.productoId].relatedProducts;
+
 
                 fetch(PRODUCTS_URL)
                     .then(respuesta => respuesta.json())
@@ -93,8 +94,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         });
 
                         document.getElementById("related").innerHTML = relacionados;
-
-                    })
+                    }
+                    )
 
             })
 
