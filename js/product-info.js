@@ -80,21 +80,27 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                         let relacionados = "";
 
-                        info.forEach(function (i) {
+                        for(let i = 0; i< info.length; i++) {
+
+                            let relacion = datos[i];
 
                             relacionados += `
                         <div class="card" style="width: 10rem; display: inline-block;">
-                        <img src="${datos[i].imgSrc}" class="card-img-top" alt="">
+                        <img src="${relacion.imgSrc}" class="card-img-top" alt="">
                         <div class="card-body">
-                          <h5 class="card-title">${datos[i].name}</h5>
-                          <p class="card-text">${datos[i].cost}</p>
-                          <a href="javascript:verProducto(${datos[i].id})" class="btn btn-secondary">VER</a>
+                          <h5 class="card-title">${relacion.name}</h5>
+                          <p class="card-text">${relacion.cost}</p>
+                          <a href="javascript:verProducto(${relacion.id})" class="btn btn-secondary">VER</a>
                         </div>
                       </div>`
-                        });
-
-                        document.getElementById("related").innerHTML = relacionados;
+                    
+                            
+                            document.getElementById("related").innerHTML = relacionados;
+                        };
+                        
+                        
                     }
+                    
                     )
 
             })
