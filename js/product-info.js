@@ -7,6 +7,7 @@ const SUZUKI = "https://amarquezd.github.io/JaP-para-Jsons/SUZUKI-INFO.json"
 const CHEVROLET = "https://amarquezd.github.io/JaP-para-Jsons/CHEVROLET-INFO.json"
 const ALL_PRODS = "https://amarquezd.github.io/JaP-para-Jsons/all-prods.json"
 var comments = [];
+var relatedProdsArray = []
 
 function mostrarImagenes(array) {
 
@@ -63,7 +64,41 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
         }
 
-        fetch(PRODUCTS_URL)
+        fetch(ALL_PRODS)
+            .then(response => response.json())
+            .then(data => {
+
+                let info = [];
+                for (let i = 0; i < data.length; i++) {
+                    info = data[i].relatedProducts;
+                }
+
+                fetch(PRODUCTS_URL)
+                    .then(respuesta => respuesta.json())
+                    .then(datos => {
+
+                        let relacionados = "";
+
+                        info.forEach(function (i) {
+
+                            relacionados += `
+                        <div class="card" style="width: 10rem; display: inline-block;">
+                        <img src="${datos[i].imgSrc}" class="card-img-top" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title">${datos[i].name}</h5>
+                          <p class="card-text">${datos[i].cost}</p>
+                          <a href="javascript:verProducto(${datos[i].id})" class="btn btn-secondary">VER</a>
+                        </div>
+                      </div>`
+                        });
+
+                        document.getElementById("related").innerHTML = relacionados;
+
+                    })
+
+            })
+
+        /*fetch(PRODUCTS_URL)
             .then(respuesta => respuesta.json())
             .then(datos => {
 
@@ -84,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 }
                 document.getElementById("related").innerHTML = relacionados;
 
-            })
+            })*/
 
 
         fetch(PRODUCT_INFO_COMMENTS_URL)
