@@ -71,8 +71,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 let prodObject = JSON.parse(prodObjString);
                 let info = [];
 
-                info = data[prodObject.productoId].relatedProducts;
-
+                info = data.find(car => prodObject.productoId == car.id).relatedProducts;
+                // info = data[prodObject.productoId].relatedProducts;
+                // for(let i =0 ; i< data.length; i++) {
+                // const car = data[i]
+                //     if(prodObject === data[i].id){
+                //         info = data[i].relatedProducts;
+                //     }
+                // }
 
                 fetch(PRODUCTS_URL)
                     .then(respuesta => respuesta.json())
@@ -82,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
                         for(let i = 0; i< info.length; i++) {
 
-                            let relacion = datos[i];
+                            let relacion = datos[info[i]];
 
                             relacionados += `
                         <div class="card" style="width: 10rem; display: inline-block;">
@@ -93,15 +99,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
                           <a href="javascript:verProducto(${relacion.id})" class="btn btn-secondary">VER</a>
                         </div>
                       </div>`
-                    
-                            
-                            document.getElementById("related").innerHTML = relacionados;
+                                           
                         };
                         
-                        
-                    }
-                    
-                    )
+                        document.getElementById("related").innerHTML = relacionados;
+                    })
 
             })
 

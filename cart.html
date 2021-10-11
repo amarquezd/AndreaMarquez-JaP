@@ -40,20 +40,18 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <div class="dropdown">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <div>
-            <h6 id="logged-user"></h6>
-          </div>
-        </a>
-      
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary" id="logged-user"></button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+        </button>
+        <div class="dropdown-menu">
           <a class="dropdown-item" href="cart.html">Mi carrito</a>
-          <a class="dropdown-item" href="#">Mi perfil</a>
-          <a class="dropdown-item" href="#" onclick="cierraSesion()">Cerrar sesión</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar sesión</a>
         </div>
-    </div>
+      </div>
   </nav>
   <div class="container p-5">
     <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
