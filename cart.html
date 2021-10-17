@@ -53,27 +53,78 @@
         </div>
       </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container-fluid">
+    <div class="row mt-4">
+      <div class="col-sm-12 col-md-12 col-lg-8">
+        <div class="row">
+          <h4 class="col">Tu Carrito:</h4>
+          <p class="col text-muted text-right" id="numberOfItems">2 items</p>
+        </div>
+        <hr>
+
+        <div id="cart_info"></div>
+
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-3 " style="background-color: rgb(193, 194, 194); border-radius: 10px;">
+        <h4 style="color: white;" class="mt-2">Resumen de Compra:</h4>
+        <div class="row mt-5 mb-5">
+          <div class="dropdown col-6">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Elige el tipo de envío
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">Premium (2 a 5 días)</button>
+              <button class="dropdown-item" type="button">Express (5 a 8 días)</button>
+              <button class="dropdown-item" type="button">Standar (12 a 15 días)</button>
+            </div>
+          </div>
+          <div class="dropdown col-6">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Elige forma de pago
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">Tarjeta de crédito</button>
+              <button class="dropdown-item" type="button">Transferencia Bancaria</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-5">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">$ xxxx</h5>
+                <p class="card-text">Precio en pesos uruguayos</p>
+                <a href="#" class="btn btn-secondary">Pagar en Pesos</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">USD xxxx</h5>
+                <p class="card-text">Precio en dólares Americanos</p>
+                <a href="#" class="btn btn-secondary">Pagar en Dólares</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>
