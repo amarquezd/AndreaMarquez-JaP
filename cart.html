@@ -58,7 +58,7 @@
       <div class="col-sm-12 col-md-12 col-lg-8">
         <div class="row">
           <h4 class="col">Tu Carrito:</h4>
-          <p class="col text-muted text-right" id="numberOfItems">2 items</p>
+          <p class="col text-muted text-right" id="numberOfItems"></p>
         </div>
         <hr>
 
@@ -67,26 +67,37 @@
       </div>
       <div class="col-sm-12 col-md-12 col-lg-3 " style="background-color: rgb(193, 194, 194); border-radius: 10px;">
         <h4 style="color: white;" class="mt-2">Resumen de Compra:</h4>
-        <div class="row mt-5 mb-5">
-          <div class="dropdown col-6">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Elige el tipo de envío
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">Premium (2 a 5 días)</button>
-              <button class="dropdown-item" type="button">Express (5 a 8 días)</button>
-              <button class="dropdown-item" type="button">Standar (12 a 15 días)</button>
-            </div>
+        <div class="row mt-4 mb-5">
+          <h6 class="col-12 mb-3" style="color: white;">Elige el tipo de envio</h6>
+          <div class="col-12 m-1">
+            <input type="radio" id="premium" value="1">
+            <label for="premium">Premium (2 a 5 días)</label><br>
+            <input type="radio" id="express" value="2" checked>
+            <label for="express">Express (5 a 8 días)</label><br>
+            <input type="radio" id="standar" value="3">
+            <label for="standar">Standar (12 a 15 días)</label>
           </div>
-          <div class="dropdown col-6">
+          <div class="col-12 m-1">
+            <label for="direccion">Dirección</label>
+            <input class="col-12" style="border-radius: 5px;" type="text" name="direccion" placeholder="calle, esquina y número de puerta">
+            <label for="direccion">Teléfono</label>
+            <input class="col-12" style="border-radius: 5px;" type="text" name="direccion" placeholder="número de telefono">
+          </div>
+          <h6 class="col-12 mb-3" style="color: white;">Elige forma de pago</h6>
+          <div class="col-12 m-1">
+            <input type="radio" id="tdc" value="1" checked>
+            <label for="tdc">Tarjeta de crédito</label><br>
+            <input type="radio" id="transf" value="2">
+            <label for="transf">Transferencia Bancaria</label><br>
+          </div>
+          <div class="dropdown col-6 mt-3">
             <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              Elige forma de pago
+              Elige tu país de residencia
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button class="dropdown-item" type="button">Tarjeta de crédito</button>
-              <button class="dropdown-item" type="button">Transferencia Bancaria</button>
+              <button class="dropdown-item" type="button">Uruguay</button>
+              <button class="dropdown-item" type="button">Otro</button>
             </div>
           </div>
         </div>
@@ -94,7 +105,7 @@
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">$ xxxx</h5>
+                <h5 class="card-title" id="precioUyu"></h5>
                 <p class="card-text">Precio en pesos uruguayos</p>
                 <a href="#" class="btn btn-secondary">Pagar en Pesos</a>
               </div>
@@ -103,7 +114,7 @@
           <div class="col-sm-6 col-md-6 col-lg-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">USD xxxx</h5>
+                <h5 class="card-title" id="precioUsd"></h5>
                 <p class="card-text">Precio en dólares Americanos</p>
                 <a href="#" class="btn btn-secondary">Pagar en Dólares</a>
               </div>
