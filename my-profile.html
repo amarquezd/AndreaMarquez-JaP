@@ -54,11 +54,56 @@
       </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <h3 class="display-4">Mi Perfil</h3>
+    <div class="my-3 col-sm-12 col-md-6 col-lg-12">
+      <form>
+
+        <div class="col-12">
+          <h5>Nombre: </h5><h5 id="profile-name"></h5>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body my-2">
+                  <input type="text" name="perfil" id="profile-name-info" placeholder="ej. Juan Pérez">
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5>Edad: </h5><h5 id="profile-date"></h5>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body my-2">
+                  <input type="number" min="15" name="perfil" id="profile-date-info">
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5>Correo: </h5><h5 id="profile-mail"></h5>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body my-2">
+                  <input type="email" name="correo" id="profile-mail-info" placeholder="ej. juanperez@gmail.com">
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5>Telefono: </h5><h5 id="profile-phone"></h5>
+          <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body my-2">
+                  <input type="tel" name="perfil" id="profile-phone-info" placeholder="ej. 095456125">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target=".multi-collapse"
+      aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Modificar</button>
+      <button class="btn btn-secondary" type="button" onclick="guardaInfo()">Guardar</button>
     </div>
   </div>
   <footer class="text-muted bg-light">

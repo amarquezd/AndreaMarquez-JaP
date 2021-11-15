@@ -58,6 +58,11 @@ document.addEventListener("DOMContentLoaded", function(e){
 function cerrarSesion(){
 
   localStorage.removeItem("nombre");
+  localStorage.removeItem("profileName");
+  localStorage.removeItem("profileDate");
+  localStorage.removeItem("profileMail");
+  localStorage.removeItem("profPhone");
+  localStorage.removeItem("producto");
  
   window.location = "index.html";
 

@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         <img src="${relacion.imgSrc}" class="card-img-top" alt="">
                         <div class="card-body">
                           <h5 class="card-title">${relacion.name}</h5>
-                          <p class="card-text">${relacion.cost}</p>
+                          <p class="card-text">USD ${relacion.cost}</p>
                           <a href="javascript:verProducto(${relacion.id})" class="btn btn-secondary">VER</a>
                         </div>
                       </div>`

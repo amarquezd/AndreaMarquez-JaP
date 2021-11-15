@@ -3,10 +3,11 @@
 //elementos HTML presentes.
 const CART_PRODS = "https://japdevdep.github.io/ecommerce-api/cart/654.json"
 let productos
+let porcentajeDeEnvio = 0;
 
 function subtotal(numberOfArticles) {
-  let totalPesos = 0;
-  let totalDolares = 0
+  let subtotalPesos = 0;
+  let subtotalDolares = 0
 
   for (let i = 0; i < numberOfArticles; i++) {
 
@@ -16,18 +17,33 @@ function subtotal(numberOfArticles) {
     let subtotalItem = cantidad * precio;
 
     if (productos[i].currency != "UYU") {
-      totalPesos += subtotalItem * 40;
-      totalDolares += subtotalItem;
+      subtotalPesos += subtotalItem * 40;
+      subtotalDolares += subtotalItem;
     } else {
-      totalPesos += subtotalItem;
-      totalDolares += subtotalItem / 40;
+      subtotalPesos += subtotalItem;
+      subtotalDolares += subtotalItem / 40;
     }
 
     document.getElementById(`subtitem${i}`).innerHTML = subtotalItem;
   }
 
-  document.getElementById(`precioUyu`).innerHTML = `UYU `+ totalPesos;
-  document.getElementById(`precioUsd`).innerHTML = `USD `+ totalDolares;
+  document.getElementById(`precioUyu`).innerHTML = subtotalPesos;
+  document.getElementById(`precioUsd`).innerHTML = subtotalDolares;
+}
+
+function calculoEnvio() {
+
+  let pesos = parseInt(document.getElementById("precioUyu").innerHTML);
+  let dolares = parseInt(document.getElementById("precioUsd").innerHTML);
+
+  let envioPesos = Math.round(pesos * porcentajeDeEnvio) / 100;
+  let envioDolares = Math.round(dolares * porcentajeDeEnvio) / 100;
+
+  document.getElementById("envioUyu").innerHTML = envioPesos;
+  document.getElementById("envioUsd").innerHTML = envioDolares;
+
+  document.getElementById("precioTotalUyu").innerHTML = `UYU ` + (pesos + envioPesos);
+  document.getElementById("precioTotalUsd").innerHTML = `USD ` + (dolares + envioDolares);
 }
 
 document.addEventListener("DOMContentLoaded", function (e) {
@@ -74,9 +90,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
         subtotal(data.articles.length);
       }
 
-      document.getElementById('numberOfItems').innerHTML = data.articles.length +` items`;
+      document.getElementById('numberOfItems').innerHTML = data.articles.length + ` items`;
     })
 
+  document.getElementById("envioPremium").addEventListener("change", function () {
+    porcentajeDeEnvio = 15;
+    calculoEnvio();
+  })
 
+  document.getElementById("envioExpress").addEventListener("change", function () {
+    porcentajeDeEnvio = 7;
+    calculoEnvio()
+  })
+
+  document.getElementById("envioStandard").addEventListener("change", function () {
+    porcentajeDeEnvio = 5;
+    calculoEnvio()
+  })
 
 });

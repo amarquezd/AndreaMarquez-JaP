@@ -36,9 +36,9 @@ function sortProducts(criteria, array) {
     return result
 }
 
-function verProducto(id){
-    localStorage.setItem("producto", JSON.stringify({productoId: id}));
-    window.location = "product-info.html";    
+function verProducto(id) {
+    localStorage.setItem("producto", JSON.stringify({ productoId: id }));
+    window.location = "product-info.html";
 }
 
 function showProductsList() {
@@ -53,7 +53,18 @@ function showProductsList() {
             ((precioMax == undefined) || (precioMax != undefined && parseInt(datos.cost) <= precioMax))) {
 
             htmlContentToAppend += `
-            <a href="javascript:verProducto(`+ datos.id +`)"  class="list-group-item list-group-item-action">
+            <div class="card col-lg-3 col-md-5 col-sm-12 m-1 justify-content-center">
+                <img src="` + datos.imgSrc + `" class="card-img-top mt-3 img-thumbnail" alt="">
+                <div class="card-body row">
+                    <h5 class="card-title col-6"><strong>` + datos.name + `</strong></h5>
+                    <h6 class="card-title col-6 text-right"><strong>USD ` + datos.cost + `</strong></h6>
+                    <p class="card-text text-center">` + datos.description + `</p>
+                    <a href="javascript:verProducto(`+ datos.id + `)" class="btn btn-secondary col-12">VER MÁS</a>
+                </div>
+            </div>
+            `
+        /*`
+            <a href="javascript:verProducto(`+ datos.id + `)"  class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + datos.imgSrc + `" alt="` + datos.name + `" class="img-thumbnail">
@@ -68,9 +79,9 @@ function showProductsList() {
                 </div>               
             </a>
             
-            `
+            `*/
         }
-        
+
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
     }
 
@@ -159,8 +170,19 @@ document.addEventListener("DOMContentLoaded", function (e) {
                     const busqueda = dato.name.toLowerCase();
 
                     if (busqueda.includes(texto) || busqueda === '') {
-                        
+
                         resultado += `
+                        <div class="card col-lg-3 col-md-5 col-sm-12 m-2 justify-content-center">
+                            <img src="` + dato.imgSrc + `" class="card-img-top mt-3 img-thumbnail" alt="">
+                            <div class="card-body row">
+                                <h5 class="card-title col-6"><strong>` + dato.name + `</strong></h5>
+                                <h6 class="card-title col-6 text-right"><strong>USD ` + dato.cost + `</strong></h6>
+                                <p class="card-text text-center">` + dato.description + `</p>
+                                <a href="javascript:verProducto(`+ dato.id + `)" class="btn btn-secondary col-12">VER MÁS</a>
+                            </div>
+                        </div>
+                        `
+                       /* `
                 <a href="product-info.html" class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-3">
@@ -175,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         </div>
                     </div>
                 </a>
-                `
+                `*/
                     }
                 }
 
